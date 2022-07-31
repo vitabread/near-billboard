@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/near-billboard/static/css/main.d87cbb72.chunk.css",
+    "main.js": "/near-billboard/static/js/main.91f8386b.chunk.js",
+    "main.js.map": "/near-billboard/static/js/main.91f8386b.chunk.js.map",
+    "runtime-main.js": "/near-billboard/static/js/runtime-main.33b6643e.js",
+    "runtime-main.js.map": "/near-billboard/static/js/runtime-main.33b6643e.js.map",
+    "static/css/2.fda90792.chunk.css": "/near-billboard/static/css/2.fda90792.chunk.css",
+    "static/js/2.89a9ff7f.chunk.js": "/near-billboard/static/js/2.89a9ff7f.chunk.js",
+    "static/js/2.89a9ff7f.chunk.js.map": "/near-billboard/static/js/2.89a9ff7f.chunk.js.map",
+    "static/js/3.3204f183.chunk.js": "/near-billboard/static/js/3.3204f183.chunk.js",
+    "static/js/3.3204f183.chunk.js.map": "/near-billboard/static/js/3.3204f183.chunk.js.map",
+    "index.html": "/near-billboard/index.html",
+    "static/css/2.fda90792.chunk.css.map": "/near-billboard/static/css/2.fda90792.chunk.css.map",
+    "static/css/main.d87cbb72.chunk.css.map": "/near-billboard/static/css/main.d87cbb72.chunk.css.map",
+    "static/js/2.89a9ff7f.chunk.js.LICENSE.txt": "/near-billboard/static/js/2.89a9ff7f.chunk.js.LICENSE.txt",
+    "static/media/bootstrap-icons.css": "/near-billboard/static/media/bootstrap-icons.ea98e12d.woff2",
+    "static/media/handshake.c190260f.jpg": "/near-billboard/static/media/handshake.c190260f.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.33b6643e.js",
+    "static/css/2.fda90792.chunk.css",
+    "static/js/2.89a9ff7f.chunk.js",
+    "static/css/main.d87cbb72.chunk.css",
+    "static/js/main.91f8386b.chunk.js"
+  ]
+}
