@@ -1,5 +1,5 @@
 import { Promise, listedPromises } from './model';
-import { ContractPromiseBatch, context } from 'near-sdk-as';
+import {ContractPromiseBatch, context, u128} from 'near-sdk-as';
 
 const contractName = "nearbillboard.brandonleong.testnet";
 
@@ -38,6 +38,22 @@ export function releaseDeposit(promiseId: string): void {
     listedPromises.set(promise.id, promise);
 }
 
+
+export function deletePromise(promiseId: string): void {
+    const promise = getPromise(promiseId);
+    if (promise == null) {
+        throw new Error("Promise not found.");
+    }
+    if (promise.from != context.sender) {
+        throw new Error("You are not authorized to delete the promise.");
+    }
+    if (promise.status != "created") {
+        throw new Error("Deposit cannot be released.");
+    }
+    ContractPromiseBatch.create(promise.from).transfer(u128.div(promise.depositAmount, u128.from(2)));
+    listedPromises.delete(promiseId);
+}
+
 /* for future development
 export function transferDeposit(promiseId: string): void {
     const promise = getPromise(promiseId);
@@ -53,11 +69,6 @@ export function transferDeposit(promiseId: string): void {
 }
 */
 
-/*
-export function deletePromise(id: string): void {
-    listedPromises.delete(id);
-}
-*/
 
 /*
 export function deleteAll(): void{

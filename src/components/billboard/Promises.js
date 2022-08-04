@@ -9,6 +9,7 @@ import {
   getPromises as getPromiseList,
   releaseDeposit,
   createPromise,
+  deletePromise,
 } from "../../utils/nearbillboard";
 
 const Promises = () => {
@@ -54,6 +55,20 @@ const release = async (id) => {
   }
 };
 
+  const deleteDeposit = async (id) => {
+    try {
+      console.log("HUHU")
+      await deletePromise({
+        id
+      }).then((resp) => getPromises());
+      toast(<NotificationSuccess text="Delete promise successfully." />);
+    } catch (error) {
+      toast(<NotificationError text="Failed to delete promise." />);
+    } finally {
+      setLoading(false);
+    }
+  };
+
 useEffect(() => {
   getPromises();
 }, []);
@@ -73,6 +88,7 @@ return (
                 ..._promise,
               }}
               release={release}
+              deletePrmoise={deleteDeposit}
             />
           ))}
         </Row>

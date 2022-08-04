@@ -4,7 +4,9 @@ import { utils } from "near-api-js";
 import { Card, Button, Col, Badge, Stack } from "react-bootstrap";
 import coverImg from "../../assets/img/handshake.jpg";
 
-const Promise = ({ promise, release }) => {
+const Promise = ({ promise, release, deletePrmoise }) => {
+  const account = window.walletConnection.account();
+
   const { id, title, message, from, to, depositAmount, status, blockTimestamp } =
     promise;
 
@@ -12,9 +14,18 @@ const Promise = ({ promise, release }) => {
     release(id);
   };
 
-  var buttonClass = "d-none";
-  if (status == "created") {
+  const triggerDelete = () => {
+    deletePrmoise(id);
+  };
+
+  let buttonClass = "d-none";
+  if (status === "created" && promise.to === account.accountId) {
     buttonClass = "w-100 py-3";
+  }
+
+  let deleteButtonClass = "d-none";
+  if (status === "created" && promise.from === account.accountId) {
+    deleteButtonClass = "w-100 py-3";
   }
 
   return (
@@ -45,6 +56,13 @@ const Promise = ({ promise, release }) => {
             className={buttonClass}
           >
             Release Deposit
+          </Button>
+          <Button
+              variant="outline-danger"
+              onClick={triggerDelete}
+              className={deleteButtonClass}
+          >
+            Delete Promise
           </Button>
         </Card.Body>
       </Card>

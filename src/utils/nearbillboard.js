@@ -16,3 +16,7 @@ export function getPromises() {
 export function releaseDeposit({id}) {
   return window.contract.releaseDeposit({promiseId: id}, GAS);
 }
+
+export function deletePromise({id}) {
+  return window.contract.deletePromise({promiseId: id}, GAS);
+}
