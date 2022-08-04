@@ -18,7 +18,7 @@ export async function initializeContract() {
     nearEnv.contractName,
     {
       viewMethods: ["getPromise", "getPromises"],
-      changeMethods: ["releaseDeposit", "createPromise"],
+      changeMethods: ["releaseDeposit", "createPromise", "deletePromise"],
     }
   );
 }
