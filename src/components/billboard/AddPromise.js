@@ -3,11 +3,12 @@ import PropTypes from "prop-types";
 import { Button, Modal, Form, FloatingLabel } from "react-bootstrap";
 
 const AddPromise = ({ save }) => {
+
   const [title, setTitle] = useState("");
-  //const [image, setImage] = useState("");
   const [message, setMessage] = useState("");
   const [to, setTo] = useState("");
   const [depositAmount, setDepositAmount] = useState(0);
+  const [dueBlockIndex, setDueBlockIndex] = useState("");
   const isFormFilled = () => title && message && to && depositAmount;
 
   const [show, setShow] = useState(false);
@@ -84,6 +85,19 @@ const AddPromise = ({ save }) => {
                 }}
               />
             </FloatingLabel>
+            <FloatingLabel
+              controlId="inputDueBlockIndex"
+              label="Due Block Index"
+              className="mb-3"
+            >
+              <Form.Control
+                type="text"
+                placeholder="If Block Index > Due Block Index, then receiver can transfer the deposit to his/her account."
+                onChange={(e) => {
+                  setDueBlockIndex(e.target.value);
+                }}
+              />
+            </FloatingLabel>
           </Modal.Body>
         </Form>
         <Modal.Footer>
@@ -99,6 +113,7 @@ const AddPromise = ({ save }) => {
                 message,
                 to,
                 depositAmount,
+                dueBlockIndex,
               });
               handleClose();
             }}

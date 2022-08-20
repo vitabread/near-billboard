@@ -9,9 +9,10 @@ export class Promise {
     to: string;
     depositAmount: u128;
     status: string;
-    blockTimestamp: u64;
+    dueBlockIndex: u64;
 
     public static fromPayload(payload: Promise): Promise {
+
         const promise = new Promise();
         promise.id = payload.id;
         promise.title = payload.title;
@@ -19,12 +20,31 @@ export class Promise {
         promise.from = context.sender;
         promise.to = payload.to;
         promise.depositAmount = context.attachedDeposit;
+        promise.dueBlockIndex = payload.dueBlockIndex;
         promise.status = "created";
-        promise.blockTimestamp = context.blockTimestamp;
 
         return promise;
     }
 
+    public isOverdue(): boolean {
+        return (context.blockIndex >= this.dueBlockIndex);
+    }
+
+    public isStatusCreated(): boolean {
+        return (this.status == "created");
+    }
+
+    public markStatusReleased(): void {
+        this.status = "released";
+    }
+
+    public markStatusRescinded(): void {
+        this.status = "rescinded";
+    }
+
+    public markStatusTransferred(): void {
+        this.status = "transferred";
+    }
 }
 
 export const listedPromises = new PersistentUnorderedMap<string, Promise>("LISTED_PROMISES");

@@ -9,10 +9,26 @@ export async function createPromise(promise) {
   await window.contract.createPromise({ promise }, GAS, promise.depositAmount);
 }
 
+export function getCurrentBlockIndex() {
+  return window.contract.getCurrentBlockIndex();
+}
+
+export function isOverdue({id}) {
+  return window.contract.isOverdue({promiseId: id});
+}
+
 export function getPromises() {
   return window.contract.getPromises();
 }
 
 export function releaseDeposit({id}) {
   return window.contract.releaseDeposit({promiseId: id}, GAS);
+}
+
+export function transferDeposit({id}) {
+  return window.contract.transferDeposit({promiseId: id}, GAS);
+}
+
+export function rescindPromise({id}) {
+  return window.contract.rescindPromise({promiseId: id}, GAS);
 }

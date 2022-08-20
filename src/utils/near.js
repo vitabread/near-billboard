@@ -17,8 +17,8 @@ export async function initializeContract() {
     window.walletConnection.account(),
     nearEnv.contractName,
     {
-      viewMethods: ["getPromise", "getPromises"],
-      changeMethods: ["releaseDeposit", "createPromise"],
+      viewMethods: ["getPromise", "getPromises", "getCurrentBlockIndex", "isOverdue"],
+      changeMethods: ["createPromise", "releaseDeposit", "rescindPromise", "transferDeposit"],
     }
   );
 }
