@@ -5,7 +5,10 @@ Near billboard is a place that user can make promises in the DApp with deposit t
 
 ## Changes Log - version 0.2
 
-Added due block index to promise class
+Added due block index to promise class.
+
 Function - Rescind Promise: the promise creator can rescind the promise if the promise is not yet overdue. Half of the deposit amount will be refunded to creator and the other half will be forfeited and keep in the smart contract.
+
 Function - Transfer Deposit: if the promise's due block index is met, the receiver have the choice to transfer the deposit to his/her own account.
+
 Re-layout the UI to make information more clear and better experience.
